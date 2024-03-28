@@ -1,9 +1,21 @@
-import { Flex, IconButton, Text } from "@radix-ui/themes";
 import { useState } from "react";
-import Icon from "../../assets/Icon";
+
+import {
+  BackpackIcon,
+  GitHubLogoIcon,
+  HomeIcon,
+  MoonIcon,
+  PersonIcon,
+  SunIcon,
+} from "@radix-ui/react-icons";
+import { Flex, IconButton, Link, Separator, Tooltip } from "@radix-ui/themes";
+
+import Cards from "../../component/Cards";
+import Dropdown from "../../component/Dropdown";
+import "./index.scss";
 
 export function Dashboard() {
-  const [darkMode, setDarkMode] = useState<boolean>(false);
+  const [darkMode, setDarkMode] = useState<boolean>(true);
 
   const toggleDarkMode = () => {
     setDarkMode(!darkMode);
@@ -14,11 +26,53 @@ export function Dashboard() {
     }
   };
   return (
-    <Flex direction="column" gap="2">
-      <Text>Hello from Radix Themes :)</Text>
-      <IconButton variant="ghost" onClick={toggleDarkMode}>
-        <Icon />
-      </IconButton>
-    </Flex>
+    <>
+      <div className="header">
+        <div className="header__left">
+          <Flex gap="5">
+            <Link href="https://github.com/aliosmanekmekci/">
+              <GitHubLogoIcon />
+            </Link>
+            <Link>
+              <Dropdown />
+            </Link>
+          </Flex>
+        </div>
+        <div className="header__search"></div>
+        <div className="header__actions">
+          <Flex className="right-icon-content" gap="3" align="center">
+            <Tooltip content="Home Page">
+              <Link>
+                <HomeIcon />
+              </Link>
+            </Tooltip>
+            <Separator orientation="vertical" mt="-1" />
+            <Tooltip content="Login">
+              <Link mt="-1">
+                <PersonIcon />
+              </Link>
+            </Tooltip>
+            <Separator orientation="vertical" mt="-1" />
+            <Tooltip content="Cart">
+              <Link mt="-1">
+                <BackpackIcon />
+              </Link>
+            </Tooltip>
+            <Separator orientation="vertical" mt="-1" />
+            <Tooltip content="Cart">
+              <IconButton
+                variant="ghost"
+                onClick={toggleDarkMode}
+                className="iconButton"
+                mt="-1"
+              >
+                {darkMode ? <SunIcon /> : <MoonIcon />}
+              </IconButton>
+            </Tooltip>
+          </Flex>
+        </div>
+      </div>
+      <Cards />
+    </>
   );
 }
