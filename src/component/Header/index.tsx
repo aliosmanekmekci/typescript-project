@@ -13,7 +13,7 @@ import Dropdown from "../Dropdown";
 
 export default function Header() {
   const [darkMode, setDarkMode] = useState<boolean>(true);
-  const [location, navigate] = useLocation();
+  const [, navigate] = useLocation();
 
   const toggleDarkMode = () => {
     setDarkMode(!darkMode);
