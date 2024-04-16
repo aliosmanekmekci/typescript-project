@@ -9,7 +9,7 @@ import {
   Text,
 } from "@radix-ui/themes";
 import { useEffect, useState } from "react";
-import { navigate } from "wouter/use-hash-location";
+import { navigate } from "wouter/use-browser-location";
 
 interface Product {
   id: number;
@@ -54,7 +54,7 @@ const Carts = () => {
               <Button
                 variant="outline"
                 size="1"
-                onClick={() => navigate(`/product/${product.id}`)}
+                onClick={() => navigate(`/cart/${product.id}`)}
               >
                 Buy
               </Button>
