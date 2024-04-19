@@ -1,5 +1,8 @@
 import { Route, Switch } from "wouter";
+
 import Header from "../component/Header";
+import CategoryPage from "../component/CategoryPage"
+
 import Cart from "../routes/Cart";
 import CartDetails from "../routes/CartDetails/CartDetails";
 import { Dashboard } from "../routes/Dashboard";
@@ -13,6 +16,7 @@ const Router = () => (
       <Route path="/login" component={Login} />
       <Route path="/cart" component={Cart} />
       <Route path="/cart/:id" component={CartDetails} />
+      <Route path="/category/:category" component={CategoryPage} />
     </Switch>
   </>
 );

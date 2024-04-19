@@ -1,7 +1,10 @@
 import { ChevronDownIcon } from "@radix-ui/react-icons";
 import { Button, DropdownMenu } from "@radix-ui/themes";
+import { useLocation } from "wouter";
 
 export default function Dropdown() {
+  const [location, navigate] = useLocation();
+  console.log(location);
   return (
     <DropdownMenu.Root>
       <DropdownMenu.Trigger>
@@ -11,29 +14,32 @@ export default function Dropdown() {
         </Button>
       </DropdownMenu.Trigger>
       <DropdownMenu.Content>
-        <DropdownMenu.Item shortcut="👕">Clothing</DropdownMenu.Item>
+        <DropdownMenu.Item
+          onClick={() => navigate("/category/jewelery")}
+          shortcut="💍"
+        >
+          Jewelery
+        </DropdownMenu.Item>
         <DropdownMenu.Separator />
-        <DropdownMenu.Item shortcut="💾">Electronics</DropdownMenu.Item>
+        <DropdownMenu.Item
+          onClick={() => navigate("/category/electronics")}
+          shortcut="💾"
+        >
+          Electronics
+        </DropdownMenu.Item>
         <DropdownMenu.Separator />
-        <DropdownMenu.Item shortcut="💍">Accessories</DropdownMenu.Item>
-
-        <DropdownMenu.Sub>
-          <DropdownMenu.SubTrigger>More</DropdownMenu.SubTrigger>
-          <DropdownMenu.SubContent>
-            <DropdownMenu.Item>Move to project…</DropdownMenu.Item>
-            <DropdownMenu.Item>Move to folder…</DropdownMenu.Item>
-
-            <DropdownMenu.Separator />
-            <DropdownMenu.Item>Advanced options…</DropdownMenu.Item>
-          </DropdownMenu.SubContent>
-        </DropdownMenu.Sub>
-
+        <DropdownMenu.Item
+          onClick={() => navigate("/category/men's clothing")}
+          shortcut="👱‍♂️"
+        >
+          Men's Clothing
+        </DropdownMenu.Item>
         <DropdownMenu.Separator />
-        <DropdownMenu.Item>Share</DropdownMenu.Item>
-        <DropdownMenu.Item>Add to favorites</DropdownMenu.Item>
-        <DropdownMenu.Separator />
-        <DropdownMenu.Item shortcut="⌘ ⌫" color="red">
-          Delete
+        <DropdownMenu.Item
+          onClick={() => navigate("/category/women's clothing")}
+          shortcut="👩"
+        >
+          Women's Clothing
         </DropdownMenu.Item>
       </DropdownMenu.Content>
     </DropdownMenu.Root>
